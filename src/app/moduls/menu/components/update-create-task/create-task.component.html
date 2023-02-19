@@ -1,0 +1,33 @@
+<div class="conteiner">
+    <div class="bad-request">{{errorMessage}}</div>
+    <form (ngSubmit)="onUpdateOrCreate()">
+        <div class="inputs">
+            <label for="taskName">
+                <textarea class="name-input" type="text" id="taskName" [(ngModel)]="task.taskName" name="taskName"
+                    placeholder="Task name..." required #taskName="ngModel"></textarea>
+            </label>
+            <label for="description">
+                <textarea class="description-input" type="text" id="description" [(ngModel)]="task.description"
+                    name="description" placeholder="Description..." required #description="ngModel"></textarea>
+            </label>
+        </div>
+        <div class="row">
+            <div class="options">
+                <div class="options__select">Select a color</div>
+                <div class="colors">
+                    <ng-container *ngFor="let item of items">
+                        <input (click)="onClick(item.color , item.back)" [ngClass]="item.back">
+                    </ng-container>
+                </div>
+            </div>
+            <div class="buttons">
+                <div class="colors">
+                    <ng-container *ngIf="isChosen">
+                        <input [ngClass]="style">
+                    </ng-container>
+                </div>
+                <button type="submit" class="options__save"><img src="../../assets/img/create.png"></button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,46 @@
+<div class="new-setting">
+    <form (ngSubmit)="onSubmit()" [formGroup]="newPasswordForm">
+        <div class="title">new Password</div>
+        <ng-container *ngIf="errorMessage">
+            <small class="text-danger">{{errorMessage}}</small>
+        </ng-container>
+        <ng-container
+            *ngIf="newPasswordForm.controls['oldPassword'].dirty && newPasswordForm.hasError('required', 'oldPassword')">
+            <small class="text-danger">*oldPassword is required</small>
+        </ng-container>
+        <div class="new-setting__field">
+            <label for="oldPassword"></label>
+            <input [class.error]="newPasswordForm.controls['oldPassword'].dirty &&
+            newPasswordForm.hasError('required', 'oldPassword') ||
+            newPasswordForm.hasError('pattern', 'oldPassword')" type="text" id="oldPassword" name="oldPassword"
+                placeholder="Old password" formControlName="oldPassword">
+        </div>
+        <ng-container
+            *ngIf="newPasswordForm.controls['newPassword'].dirty && newPasswordForm.hasError('required', 'newPassword')">
+            <small class="text-danger">*new Password is required</small>
+        </ng-container>
+        <ng-container
+            *ngIf="newPasswordForm.controls['newPassword'].dirty && newPasswordForm.hasError('pattern', 'newPassword')">
+            <small class="text-danger">*new Password must contain 1 capital letter and include 8 characters</small>
+        </ng-container>
+        <div class="new-setting__field">
+            <label for="newPassword"></label>
+            <input [class.error]="newPasswordForm.controls['newPassword'].dirty &&
+            newPasswordForm.hasError('required', 'newPassword') ||
+            newPasswordForm.hasError('pattern')" type="password" id="newPassword" name="newPassword"
+                placeholder="New Password" formControlName="newPassword">
+        </div>
+        <ng-container
+            *ngIf="newPasswordForm.controls['reEnterPassword'].dirty && newPasswordForm.hasError('required', 'reEnterPassword')">
+            <small class="text-danger">*reEnterPassword is required </small>
+        </ng-container>
+        <div class="new-setting__field">
+            <label for="reEnterPassword"></label>
+            <input [class.error]="newPasswordForm.controls['reEnterPassword'].dirty &&
+            newPasswordForm.hasError('required', 'reEnterPassword') ||
+            newPasswordForm.hasError('pattern')" type="password" id="reEnterPassword" name="reEnterPassword"
+                placeholder="Re-enter the password" formControlName="reEnterPassword">
+        </div>
+        <button [disabled]="newPasswordForm.invalid" type="submit">Save</button>
+    </form>
+</div>

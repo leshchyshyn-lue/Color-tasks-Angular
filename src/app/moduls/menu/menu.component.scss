@@ -1,0 +1,15 @@
+.menu {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 20px;
+
+    &__item {
+        width: 30px;
+        height: 30px;
+        cursor: grab;
+    }
+}
+
+.all {
+    background-image: url('/assets/img/allcolors.png');
+}

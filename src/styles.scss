@@ -1,0 +1,253 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$my-app-usertasks-primary: mat.define-palette(mat.$indigo-palette);
+$my-app-usertasks-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$my-app-usertasks-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$my-app-usertasks-theme: mat.define-light-theme((color: (primary: $my-app-usertasks-primary,
+                accent: $my-app-usertasks-accent,
+                warn: $my-app-usertasks-warn,
+            )));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($my-app-usertasks-theme);
+
+/* You can add global styles to this file, and also import other style files */
+@import url(assets/nullstyle.scss);
+
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    padding: 0px 20px;
+    height: 100%;
+}
+
+
+
+.conteiner {
+    padding: 20px 135px;
+}
+
+.wrapper {
+    max-width: 920px;
+    margin: 0 auto;
+    background-color: #505050;
+    min-height: 100%;
+}
+
+.text-danger {
+    font-size: 15px;
+    text-align: center;
+    color: red;
+    max-width: 250px;
+    line-height: 15px;
+    padding-bottom: 5px;
+}
+
+.error {
+    border: 2px solid red;
+}
+
+.colors {
+    display: flex;
+    margin-left: 20px;
+
+    input {
+        cursor: grab;
+    }
+
+    &__color-grey {
+        background-color: #d9d9d9;
+        margin-right: 10px;
+        width: 30px;
+        color: transparent;
+        height: 30px;
+    }
+
+    &__color-red {
+        background-color: #ff1f00;
+        margin-right: 10px;
+        width: 30px;
+        height: 30px;
+        color: transparent;
+    }
+
+    &__color-yellow {
+        background-color: #fff500;
+        margin-right: 10px;
+        width: 30px;
+        height: 30px;
+        color: transparent;
+    }
+}
+
+button {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+}
+
+.tasks {
+    display: flex;
+    flex-direction: row;
+    max-width: 650px;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    justify-content: flex-start;
+
+    &__block {
+        background-color: #d9d9d9;
+        max-width: 150px;
+        max-height: 150px;
+        min-width: 150px;
+        min-height: 150px;
+        margin: 0px 10px 10px 0px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        a {
+            color: #000000;
+        }
+    }
+
+    &__time {
+        font-family: Inter;
+        font-size: 10px;
+        font-weight: bold;
+        color: #000;
+        text-align: end;
+        padding: 5px 5px 0px 0px;
+
+    }
+
+    &__name {
+        word-break: break-all;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 10px 5px 0px 10px;
+    }
+
+    &__buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        padding-bottom: 10px;
+
+        :first-child {
+            margin: 0px 13px 0px 7px;
+        }
+    }
+}
+
+.grey-back {
+    background-color: #D9D9D9;
+
+}
+
+.red-back {
+    background-color: #FF0404;
+}
+
+.yellow-back {
+    background-color: #FFF500;
+}
+
+
+@media(max-width: 800px) {
+    .conteiner {
+        padding: 10px 50px;
+    }
+}
+
+@media(max-width: 630px) {
+    .conteiner {
+        padding: 10px 35px;
+    }
+
+    .text-danger {
+        font-size: 10px;
+
+
+        max-width: 100px;
+        padding-bottom: 2px;
+    }
+}
+
+@media(max-width: 480px) {
+    .conteiner {
+        padding: 2px 25px;
+    }
+}
+
+@media(max-width: 430px) {
+    .tasks {
+        display: block;
+        max-width: none;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+
+        &__block {
+            background-color: #d9d9d9;
+            max-width: 100%;
+            max-height: 100%;
+            min-width: 100%;
+            min-height: 0px;
+            margin: 3px 0px 0px 0px;
+            flex-direction: row;
+        }
+
+        &__time {
+            padding-left: 5px;
+        }
+
+        &__buttons {
+            display: block;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 3px 0px;
+
+            img {
+                max-width: 35px;
+            }
+
+            :first-child {
+                margin: 0px;
+            }
+        }
+    }
+
+    .grey-back {
+        background-color: #D9D9D9;
+    }
+
+    .red-back {
+        background-color: #FF0404;
+    }
+
+    .yellow-back {
+        background-color: #FFF500;
+    }
+
+}

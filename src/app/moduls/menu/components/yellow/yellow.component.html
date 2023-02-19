@@ -1,0 +1,12 @@
+<div class="tasks">
+    <div class="tasks__block yellow-back" *ngFor="let task of yellowTasks">
+        <a [routerLink]="['/data', task.id]">
+            <div class="tasks__time">{{task.createdAt}}</div>
+            <div class="tasks__name">{{task.taskName}}</div>
+        </a>
+        <div class="tasks__buttons">
+            <a [routerLink]='["/update", task.id]'><img src="./assets/img/update.png"></a>
+            <button routerLink="/tasks" (click)="deleteTask(task.id)"><img src="./assets/img/delete.png"></button>
+        </div>
+    </div>
+</div>

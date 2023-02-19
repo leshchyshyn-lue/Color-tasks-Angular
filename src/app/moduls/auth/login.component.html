@@ -1,0 +1,43 @@
+<div class="conteiner">
+    <div class="auth">
+        <form name="form" (ngSubmit)="login()" [formGroup]="loginForm">
+            <div class="auth__title">Log in</div>
+            <ng-container *ngIf="errorMessage">
+                <small class="text-danger">{{errorMessage}}</small>
+            </ng-container>
+
+            <ng-container *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('required', 'username')">
+                <small class="text-danger">*Username is required</small>
+            </ng-container>
+
+            <div>
+                <label for="username"></label>
+                <input
+                    [class.error]="loginForm.controls['username'].dirty && loginForm.hasError('required', 'username')"
+                    type="text" id="username" name="username" placeholder="Username" formControlName="username">
+            </div>
+
+
+
+            <ng-container *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required', 'password')">
+                <small class="text-danger">*Password is required</small>
+            </ng-container>
+
+            <div>
+                <label for="password"></label>
+                <input
+                    [class.error]="loginForm.controls['password'].dirty && loginForm.hasError('required', 'password')"
+                    type="password" id="password" name="password" placeholder="Password" formControlName="password">
+            </div>
+
+
+            <button [disabled]="loginForm.invalid" type="submit">LOG IN</button>
+
+
+        </form>
+        <div class="auth__have-account">
+            <div class="auth__text">Don't have an account?</div>
+            <button routerLink="/registration" class="auth__link">Sing in</button>
+        </div>
+    </div>
+</div>

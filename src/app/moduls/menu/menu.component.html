@@ -1,0 +1,19 @@
+<ng-container *ngIf="isAuthenticated">
+    <div class="conteiner">
+        <div class="menu">
+            <ng-container *ngFor="let item of items">
+                <div class="menu__item" [routerLink]="[item.route]" [ngClass]="[item.back]"></div>
+            </ng-container>
+        </div>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="!isAuthenticated">
+    <div class="conteiner">
+        <div class="menu">
+            <ng-container *ngFor="let item of items">
+                <div class="menu__item" routerLink="/" [ngClass]="[item.back]"></div>
+            </ng-container>
+        </div>
+    </div>
+</ng-container>

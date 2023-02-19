@@ -1,0 +1,8 @@
+<div class="wrapper">
+
+  <app-user-data (newItemEvent)="onAuthentication($event)"></app-user-data>
+
+  <app-menu [isAuthenticated]="isAuthenticated"></app-menu>
+
+  <router-outlet></router-outlet>
+</div>

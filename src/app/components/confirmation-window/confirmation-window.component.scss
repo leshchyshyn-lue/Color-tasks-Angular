@@ -1,0 +1,53 @@
+.buttons {
+    display: flex;
+    justify-content: center;
+
+    button {
+        background-color: #000000;
+        padding: 10px 20px;
+        color: #fff;
+        border-radius: 5px;
+    }
+
+    :first-child {
+        margin-right: 30px;
+    }
+}
+
+.dialog {
+    font-weight: 700;
+    padding: 10px 0px;
+    min-width: 350px;
+
+    &__text {
+        text-align: center;
+        color: #000000;
+        line-height: 20px;
+    }
+}
+
+
+@media(max-width: 430px) {
+
+    .dialog {
+        padding: 2px 0px;
+        min-width: 175px;
+
+        &__text {
+            line-height: 20px;
+        }
+    }
+
+    .buttons {
+        margin-top: -20px;
+
+        button {
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        :first-child {
+            margin-right: 5px;
+        }
+    }
+}

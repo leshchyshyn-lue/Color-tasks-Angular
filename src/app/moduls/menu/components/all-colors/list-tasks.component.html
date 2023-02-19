@@ -1,0 +1,39 @@
+<div class="conteiner">
+  <div class="title">
+    <div class="title__text">Schedule</div>
+    <div class="title__new-task"><a routerLink="/add"><img src="./assets/img/plus.png"></a></div>
+  </div>
+</div>
+
+<div class="conteiner">
+  <app-grey></app-grey>
+  <app-red></app-red>
+  <app-yellow></app-yellow>
+</div>
+
+<ng-container *ngIf="showRemoveMenu">
+  <div class="conteiner">
+    <div class="clean">
+      <div class="clean__by-color">
+        <div class="colors">
+          <ng-container *ngFor="let item of items">
+            <input (click)="onClick(item.color)" [ngClass]="item.back">
+          </ng-container>
+        </div>
+        <div class="colors after-selection">
+          <ng-container *ngIf="isGrey">
+            <input class="colors__color-grey" (click)="onClick(items[0].color)">
+          </ng-container>
+          <ng-container *ngIf="isRed">
+            <input class="colors__color-red" (click)="onClick(items[1].color)">
+          </ng-container>
+          <ng-container *ngIf="isYellow">
+            <input class="colors__color-yellow" (click)="onClick(items[2].color)">
+          </ng-container>
+          <button (click)="onDeleteByColor()">Remove</button>
+        </div>
+      </div>
+      <button (click)="onDeleteAllColors()" class="clean__all after-selection">Remove All</button>
+    </div>
+  </div>
+</ng-container>

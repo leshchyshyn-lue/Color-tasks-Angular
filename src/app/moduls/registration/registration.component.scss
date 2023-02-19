@@ -1,0 +1,116 @@
+.auth {
+    background-color: #303030;
+    border-radius: 15px;
+    margin: 0 auto;
+    max-width: 350px;
+    max-height: 450px;
+    color: #fff;
+    font-weight: bold;
+    padding: 60px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        button {
+            padding: 13px 30px;
+            border-radius: 5px;
+            background-color: #900101;
+            color: #fff;
+            font-size: 20px;
+            font-weight: bold;
+
+            &:hover {
+                background-color: #B22222;
+            }
+        }
+
+        input {
+            padding: 16px 0px 16px 10px;
+            max-width: 100%;
+            margin-bottom: 20px;
+            border-radius: 5px;
+
+            &:focus {
+                border: 2px solid #AFEEEE;
+            }
+        }
+    }
+
+    &__title {
+        font-size: 32px;
+        margin-bottom: 20px;
+    }
+}
+
+.have-account {
+    display: flex;
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    align-items: center;
+
+    &__text {
+        padding-right: 8px;
+    }
+
+    &__link {
+        padding: 5px 12px;
+        border-radius: 5px;
+        background-color: #626262;
+    }
+
+    a {
+        color: #fff;
+    }
+}
+
+
+@media(max-width: 600px) {
+
+    .auth {
+        max-width: 60%;
+
+        padding: 15px 0px;
+
+        form {
+            input {
+                padding: 5px 0px 5px 5px;
+                max-width: 100px;
+                margin-bottom: 10px;
+                border-radius: 5px;
+            }
+
+            button {
+                padding: 5px 10px;
+                font-size: 10px;
+            }
+        }
+
+        &__title {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+    }
+
+    .have-account {
+
+        margin-top: 10px;
+        font-size: 6px;
+
+        &__text {
+            padding-right: 8px;
+        }
+
+        &__link {
+            padding: 3px 6px;
+
+        }
+    }
+
+
+}

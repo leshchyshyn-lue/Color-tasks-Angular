@@ -1,0 +1,41 @@
+<div class="conteiner">
+    <div class="auth">
+        <form (ngSubmit)="onSubmit()" [formGroup]="registrationForm">
+            <div class="auth__title">Sing up</div>
+            <ng-container *ngIf="errorMessage">
+                <small class="text-danger">{{errorMessage}}</small>
+            </ng-container>
+            <ng-container *ngFor="let error of usernameError">
+                <small class="text-danger"
+                    *ngIf="registrationForm.controls['username'].dirty && registrationForm.hasError(error.errorName, 'username')">
+                    {{error.message}}
+                </small>
+            </ng-container>
+            <div class="user-login">
+                <label for="username"></label>
+                <input [class.error]="registrationForm.controls['username'].dirty &&
+                     registrationForm.hasError('required', 'username') ||
+                     registrationForm.hasError('pattern', 'username')" type="text" id="username" name="username"
+                    placeholder="Username" formControlName="username">
+            </div>
+            <ng-container *ngFor="let error of passwordError">
+                <small class="text-danger"
+                    *ngIf="registrationForm.controls['password'].dirty && registrationForm.hasError(error.errorName, 'password')">
+                    {{error.message}}
+                </small>
+            </ng-container>
+            <div class="user-pass">
+                <label for="password"></label>
+                <input [class.error]="registrationForm.controls['password'].dirty &&
+                     registrationForm.hasError('required', 'password') ||
+                     registrationForm.hasError('pattern', 'password')" type="password" id="password" name="password"
+                    placeholder="Password" formControlName="password">
+            </div>
+            <button [disabled]="registrationForm.invalid" type="submit">SING UP</button>
+        </form>
+        <div class="have-account">
+            <div class="have-account__text">Already have an account?</div>
+            <a routerLink="/login" class="have-account__link">Log in</a>
+        </div>
+    </div>
+</div>
