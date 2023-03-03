@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { User } from 'src/app/entity/user';
 import { TASKS_URL } from 'src/app/environment/url';
-import { LoginService } from 'src/app/service/login.service';
+import ValidateForm from 'src/app/helpers/validateForm';
+import { UserService } from 'src/app/service/user.service';
 
 
 @Component({
@@ -18,9 +17,11 @@ export class LoginComponent implements OnInit {
 
   public loginForm!: FormGroup;
 
+  public isText: boolean = false;
+  public type: string = "password";
+
   constructor(
-    private readonly _loginService: LoginService,
-    private readonly _router: Router,
+    private readonly _userService: UserService,
     private readonly _formBuilder: FormBuilder
   ) { }
 
@@ -33,7 +34,7 @@ export class LoginComponent implements OnInit {
 
   public login(): void {
     if (this.loginForm.valid) {
-      const http = this._loginService.loginUser(
+      const http = this._userService.loginUser(
         this.loginForm.get('username')?.value,
         this.loginForm.get('password')?.value
       );
@@ -45,7 +46,6 @@ export class LoginComponent implements OnInit {
               'token',
               this.sessionId
             );
-            // this._router.navigateByUrl("/" + TASKS_URL);
             window.location.replace("/" + TASKS_URL);
           } else {
             alert("Authentication failed");
@@ -54,20 +54,15 @@ export class LoginComponent implements OnInit {
         err => this.errorMessage = "Incorrect login or password"
       );
     } else {
-      this.validateAllFormFields(this.loginForm)
+      ValidateForm.validateAllFormFields(this.loginForm)
     }
   }
 
-  private validateAllFormFields(formGroup: FormGroup) {
-    Object.keys(formGroup).forEach(field => {
-      const control = formGroup.get(field);
-      if (control instanceof FormGroup) {
-        control.markAsDirty({ onlySelf: true });
-      } else if (control instanceof FormGroup) {
-        this.validateAllFormFields(control);
-      }
-    });
+  public hideShowPass(): void {
+    this.isText = !this.isText;
+    this.isText ? this.type = "text" : this.type = "password";
   }
+
 
 }
 

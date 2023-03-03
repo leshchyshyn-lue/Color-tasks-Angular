@@ -1,20 +1,24 @@
-<div *ngIf="isAuthenticated" class="user">
-    <div class="dropdown">
-        <div class="dropdown__data visible">{{user.username}} <img class="active" src="./assets/img/user.png"></div>
-        <div class="dropdown__content">
-            <div class="dropdown__data">
-                <div class="dropdown__link">Setting</div>
-                <a routerLink="/setting"><img class="not-active" src="./assets/img/setting.png"></a>
-            </div>
-            <div class="dropdown__data">
-                <div class="dropdown__link">Logout</div>
-                <div (click)="modalWindow()"><img class="not-active" src="./assets/img/exit.png">
+<ng-container *ngIf="isAuthenticated">
+    <div class="user">
+        <div class="dropdown">
+            <div class="dropdown__data visible">{{user.username}} <img class="active" src="./assets/img/user.png"></div>
+            <div class="dropdown__content">
+                <div class="dropdown__data">
+                    <div class="dropdown__link">Setting</div>
+                    <a routerLink="/setting"><img class="not-active" src="./assets/img/setting.png"></a>
+                </div>
+                <div class="dropdown__data">
+                    <div class="dropdown__link">Logout</div>
+                    <div (click)="onExitButton()"><img class="not-active" src="./assets/img/exit.png">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div *ngIf="!isAuthenticated" class="user-menu">
-    <div class="user-menu__registration"><a routerLink="/login" href="">log in</a> </div>
-    <div class="user-menu__entry"><a routerLink="/registration">sing up</a></div>
-</div>
+</ng-container>
+<ng-container *ngIf="!isAuthenticated">
+    <div class="user-menu">
+        <div class="user-menu__registration"><a routerLink="/login" href="">log in</a> </div>
+        <div class="user-menu__entry"><a routerLink="/registration">sing up</a></div>
+    </div>
+</ng-container>

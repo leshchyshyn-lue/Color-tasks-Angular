@@ -1,0 +1,43 @@
+<div class="conteiner">
+    <ng-container *ngIf="!codeIsSent">
+        <div class="back-inputs">
+            <form name="form" (ngSubmit)="onSendEmail()" [formGroup]="forgotForm">
+                <div class="forgot-title">Forgot your password?</div>
+                <div class="forgot-text">We will be sending a reset password to your email</div>
+                <ng-container *ngIf="errorMessage">
+                    <small class="text-danger">{{errorMessage}}</small>
+                </ng-container>
+                <ng-container *ngIf="forgotForm.controls['email'].dirty && forgotForm.hasError('required', 'email')">
+                    <small class="text-danger">*Email is required</small>
+                </ng-container>
+                <div>
+                    <input
+                        [class.error]="forgotForm.controls['email'].dirty && forgotForm.hasError('required', 'email')"
+                        type="tel" id="email" name="email" placeholder="Enter your email" formControlName="email">
+                </div>
+                <button [disabled]="forgotForm.invalid" type="submit">Send</button>
+            </form>
+        </div>
+    </ng-container>
+</div>
+<ng-container *ngIf="codeIsSent">
+    <div class="back-inputs">
+        <form (ngSubmit)="onSendCode()" [formGroup]="codeForm">
+            <ng-container *ngIf="errorMessage">
+                <small class="text-danger">{{errorMessage}}</small>
+            </ng-container>
+            <div class="forgot-text">Submit the code sent to you by email</div>
+            <ng-container *ngIf="codeForm.controls['code'].dirty && codeForm.hasError('pattern', 'code')">
+                <small class="text-danger">*Code must contain 6 numbers</small>
+            </ng-container>
+            <input type="text" name="code" id="code" placeholder="XXXXXX" formControlName="code">
+            <button [disabled]="codeForm.invalid" type="submit">Send</button>
+        </form>
+        <ng-container *ngIf="!linkIsAllowed">
+            <div class="resend-text">You will be able to resend the code after {{timer}} seconds</div>
+        </ng-container>
+        <ng-container *ngIf="linkIsAllowed">
+            <button class="resend-button" (click)="resendEmail()">Resend code</button>
+        </ng-container>
+    </div>
+</ng-container>

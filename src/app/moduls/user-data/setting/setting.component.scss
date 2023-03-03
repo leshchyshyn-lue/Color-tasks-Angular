@@ -1,88 +1,21 @@
-.new-setting {
-    background-color: #303030;
-    color: #fff;
-    font-weight: bold;
-    padding: 60px 80px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 auto;
-    max-width: 60%;
-    max-height: 500px;
-    margin-top: 20px;
-    border-radius: 15px;
-
-    input {
-        padding: 16px 0px 16px 10px;
-        max-width: 100%;
-        margin-bottom: 20px;
-        border-radius: 5px;
-
-        &:focus {
-            border: 2px solid #AFEEEE;
-        }
-    }
-
-    form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        button {
-            padding: 13px 30px;
-            border-radius: 5px;
-            background-color: #900101;
-            color: #fff;
-            font-size: 20px;
-            font-weight: bold;
-
-            &:hover {
-                background-color: #B22222;
-            }
-        }
-    }
-
-
-}
-
-.title {
-    font-size: 21px;
-    margin-bottom: 20px;
-}
-
-@media (max-width: 630px) {
-    .new-setting {
-        padding: 40px 0px;
-        max-width: 250px;
-        margin-top: 5px;
-    }
-
-    .title {
-        font-size: 18px;
-        margin-bottom: 10px;
-    }
+.delete-my {
+    margin-top: 60px;
+    background-color: #900101;
+    padding: 7px 12px;
+    border-radius: 5px;
 }
 
 @media(max-width:430px) {
-    .new-setting {
-        max-width: 60%;
+
+    .delete-my {
+        margin-top: 20px;
+        font-size: 10px;
     }
+}
 
-    .title {
-        font-size: 15px;
-        margin-bottom: 5px;
-    }
-
-    .new-setting {
-        input {
-            padding: 8px 0px 8px 5px;
-            max-width: 120px;
-            margin-bottom: 10px;
-        }
-
-        button {
-            padding: 6px 15px;
-            font-size: 14px;
-        }
+@media (max-width: 600px) {
+    .delete-my {
+        margin-top: 30px;
+        padding: 5px 9px;
     }
 }

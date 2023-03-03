@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ComformationWindowComponent } from 'src/app/components/confirmation-window/confirmation-window.component';
 import { ButtonItem } from 'src/app/model/button-item';
 import { ColorsTask } from 'src/app/model/colors-task';
-import { ModalWindowComponent } from 'src/app/components/confirmation-window/confirmation-window.component';
 import { TaskService } from 'src/app/service/task.service';
 import { GreyComponent } from '../grey/grey.component';
 import { RedComponent } from '../red/red.component';
@@ -18,11 +18,11 @@ import { YellowComponent } from '../yellow/yellow.component';
 export class ListTasksComponent implements OnInit {
 
   @ViewChild(GreyComponent)
-  greyComponent!: GreyComponent;
+  readonly _greyComponent!: GreyComponent;
   @ViewChild(RedComponent)
-  redComponent!: RedComponent;
+  readonly _redComponent!: RedComponent;
   @ViewChild(YellowComponent)
-  yellowComponent!: YellowComponent;
+  readonly _yellowComponent!: YellowComponent;
 
   public items: ButtonItem[] = [
     { back: "colors__color-grey", color: ColorsTask.GREY },
@@ -46,9 +46,9 @@ export class ListTasksComponent implements OnInit {
   }
 
   public reload(): void {
-    this.greyComponent?.ngOnInit();
-    this.redComponent?.ngOnInit();
-    this.yellowComponent?.ngOnInit();
+    this._greyComponent?.findAllGreyTasks();
+    this._redComponent?.findAllRedTasks();
+    this._yellowComponent?.findAllYellowTasks();
   }
 
   public tasksLength(): void {
@@ -66,11 +66,10 @@ export class ListTasksComponent implements OnInit {
       this.tasksLength();
       this.reload();
     });
-
   }
 
   public onDeleteAllColors(): void {
-    let dialogRef = this._matDialog.open(ModalWindowComponent,
+    const dialogRef = this._matDialog.open(ComformationWindowComponent,
       {
         data: "Are you sure you want to delete all your tasks?"
       });

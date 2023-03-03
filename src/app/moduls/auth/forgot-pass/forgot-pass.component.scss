@@ -1,0 +1,56 @@
+.resend-text {
+    margin-top: 20px;
+}
+
+.resend-button {
+    margin-top: 20px;
+    color: #fff;
+    font-weight: bold;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #fff;
+}
+
+.forgot-text {
+    margin: 20px 0px;
+    text-align: center;
+}
+
+@media(max-width: 600px) {
+    .resend-text {
+        margin-top: 10px;
+        font-size: 8px;
+    }
+
+    .resend-button {
+        margin-top: 10px;
+        padding-bottom: 2px;
+        border-bottom: 2px solid #fff;
+    }
+
+    .forgot-text {
+        margin: 10px 0px;
+        font-size: 8px;
+    }
+}
+
+@media(max-width: 350px) {
+    .resend-text {
+        margin-top: 5px;
+        font-size: 5px;
+    }
+
+    .forgot-title {
+        font-size: 8px;
+    }
+
+    .forgot-text {
+        margin: 5px 0px;
+        font-size: 5px;
+    }
+
+    .resend-button {
+        margin-top: 5px;
+        padding-bottom: 1px;
+        border-bottom: 1px solid #fff;
+    }
+}

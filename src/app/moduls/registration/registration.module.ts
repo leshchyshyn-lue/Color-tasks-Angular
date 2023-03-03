@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { ReactiveFormsModule } from "@angular/forms";
 import { RegistrationComponent } from "./registration.component";
 import { RouterModule } from "@angular/router";
 import { BrowserModule } from "@angular/platform-browser";

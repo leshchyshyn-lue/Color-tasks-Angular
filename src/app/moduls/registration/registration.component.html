@@ -25,12 +25,56 @@
                 </small>
             </ng-container>
             <div class="user-pass">
-                <label for="password"></label>
                 <input [class.error]="registrationForm.controls['password'].dirty &&
                      registrationForm.hasError('required', 'password') ||
-                     registrationForm.hasError('pattern', 'password')" type="password" id="password" name="password"
+                     registrationForm.hasError('pattern', 'password')" [type]="type" id="password" name="password"
                     placeholder="Password" formControlName="password">
+                <ng-container *ngIf="isText">
+                    <span (click)="hideShowPass()" class="user-pass__hide-show"><img
+                            src="../../../assets/img/isShown.png"></span>
+                </ng-container>
+                <ng-container *ngIf="!isText">
+                    <span (click)="hideShowPass()" class="user-pass__hide-show"><img
+                            src="../../../assets/img/isHidden.png"></span>
+                </ng-container>
             </div>
+            <ng-container *ngFor="let error of phoneNumberError">
+                <small class="text-danger"
+                    *ngIf="registrationForm.controls['phoneNumber'].dirty && registrationForm.hasError(error.errorName, 'phoneNumber')">
+                    {{error.message}}
+                </small>
+            </ng-container>
+            <div class="user-phone">
+                <input [class.error]="registrationForm.controls['phoneNumber'].dirty &&
+                     registrationForm.hasError('required', 'phoneNumber') ||
+                     registrationForm.hasError('pattern', 'phoneNumber')" type="tel" id="phoneNumber"
+                    name="phoneNumber" placeholder="xxx-xxxxxxx" formControlName="phoneNumber">
+            </div>
+            <ng-container *ngFor="let error of emailError">
+                <small class="text-danger"
+                    *ngIf="registrationForm.controls['email'].dirty && registrationForm.hasError(error.errorName, 'email')">
+                    {{error.message}}
+                </small>
+            </ng-container>
+            <div class="user-email">
+                <input [class.error]="registrationForm.controls['email'].dirty &&
+                     registrationForm.hasError('required', 'email') ||
+                     registrationForm.hasError('pattern', 'email')" type="email" id="email" name="email"
+                    placeholder="xxxxx@gmail.com" formControlName="email">
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
             <button [disabled]="registrationForm.invalid" type="submit">SING UP</button>
         </form>
         <div class="have-account">
