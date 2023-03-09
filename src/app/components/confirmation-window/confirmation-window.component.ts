@@ -7,7 +7,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
   templateUrl: './confirmation-window.component.html',
   styleUrls: ['./confirmation-window.component.scss']
 })
-export class ModalWindowComponent {
+export class ComformationWindowComponent {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: string

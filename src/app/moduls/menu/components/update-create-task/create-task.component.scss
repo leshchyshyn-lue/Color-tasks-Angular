@@ -57,3 +57,20 @@ textarea {
     align-items: center;
     margin-top: -25px;
 }
+
+.task-danger {
+    font-size: 18px;
+    text-align: center;
+}
+
+@media (max-width:600px) {
+    .inputs {
+        margin: 5px 0px 5px 0px;
+    }
+
+    .task-danger {
+        font-size: 10px;
+        text-align: center;
+        padding-left: 5px;
+    }
+}

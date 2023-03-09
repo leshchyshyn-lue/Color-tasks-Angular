@@ -1,6 +1,6 @@
-<div class="new-setting">
+<div class="back-inputs">
     <form (ngSubmit)="onSubmit()" [formGroup]="newPasswordForm">
-        <div class="title">new Password</div>
+        <div class="back-inputs__title">new Password</div>
         <ng-container *ngIf="errorMessage">
             <small class="text-danger">{{errorMessage}}</small>
         </ng-container>
@@ -8,11 +8,10 @@
             *ngIf="newPasswordForm.controls['oldPassword'].dirty && newPasswordForm.hasError('required', 'oldPassword')">
             <small class="text-danger">*oldPassword is required</small>
         </ng-container>
-        <div class="new-setting__field">
-            <label for="oldPassword"></label>
+        <div>
             <input [class.error]="newPasswordForm.controls['oldPassword'].dirty &&
             newPasswordForm.hasError('required', 'oldPassword') ||
-            newPasswordForm.hasError('pattern', 'oldPassword')" type="text" id="oldPassword" name="oldPassword"
+            newPasswordForm.hasError('pattern', 'oldPassword')" type="password" id="oldPassword" name="oldPassword"
                 placeholder="Old password" formControlName="oldPassword">
         </div>
         <ng-container
@@ -21,26 +20,33 @@
         </ng-container>
         <ng-container
             *ngIf="newPasswordForm.controls['newPassword'].dirty && newPasswordForm.hasError('pattern', 'newPassword')">
-            <small class="text-danger">*new Password must contain 1 capital letter and include 8 characters</small>
+            <small class="text-danger">*new password must contain 1 capital letter and include 8 characters</small>
         </ng-container>
-        <div class="new-setting__field">
-            <label for="newPassword"></label>
+        <div class="user-pass">
             <input [class.error]="newPasswordForm.controls['newPassword'].dirty &&
             newPasswordForm.hasError('required', 'newPassword') ||
-            newPasswordForm.hasError('pattern')" type="password" id="newPassword" name="newPassword"
-                placeholder="New Password" formControlName="newPassword">
+            newPasswordForm.hasError('pattern')" [type]="type" id="newPassword" name="newPassword"
+                placeholder="New password" formControlName="newPassword">
+            <ng-container *ngIf="isText">
+                <span (click)="hideShowPass()" class="user-pass__hide-show"><img
+                        src="../../../assets/img/isShown.png"></span>
+            </ng-container>
+            <ng-container *ngIf="!isText">
+                <span (click)="hideShowPass()" class="user-pass__hide-show"><img
+                        src="../../../assets/img/isHidden.png"></span>
+            </ng-container>
         </div>
         <ng-container
             *ngIf="newPasswordForm.controls['reEnterPassword'].dirty && newPasswordForm.hasError('required', 'reEnterPassword')">
-            <small class="text-danger">*reEnterPassword is required </small>
+            <small class="text-danger">*re-Enter Password is required </small>
         </ng-container>
-        <div class="new-setting__field">
-            <label for="reEnterPassword"></label>
+        <div>
             <input [class.error]="newPasswordForm.controls['reEnterPassword'].dirty &&
             newPasswordForm.hasError('required', 'reEnterPassword') ||
-            newPasswordForm.hasError('pattern')" type="password" id="reEnterPassword" name="reEnterPassword"
+            newPasswordForm.hasError('pattern')" [type]="type" id="reEnterPassword" name="reEnterPassword"
                 placeholder="Re-enter the password" formControlName="reEnterPassword">
         </div>
         <button [disabled]="newPasswordForm.invalid" type="submit">Save</button>
     </form>
+    <button (click)="onDeleteAccount()" class="delete-my">Delete my account</button>
 </div>

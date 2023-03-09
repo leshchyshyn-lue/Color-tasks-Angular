@@ -8,12 +8,13 @@
 
 # Node
 /node_modules
-.vscode
+
 npm-debug.log
 yarn-error.log
 
 # IDEs and editors
 .idea/
+
 .project
 .classpath
 .c9/
@@ -23,6 +24,7 @@ yarn-error.log
 
 # Visual Studio Code
 .vscode/*
+.vscode
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json

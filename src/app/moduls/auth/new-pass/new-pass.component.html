@@ -1,0 +1,45 @@
+<div class="back-inputs">
+    <form (ngSubmit)="onSubmit()" [formGroup]="newPasswordForm">
+        <div class="back-inputs__title">new Password</div>
+        <ng-container *ngIf="errorMessage">
+            <small class="text-danger">{{errorMessage}}</small>
+        </ng-container>
+        <ng-container *ngFor="let error of emailError">
+            <small class="text-danger" *ngIf="newPasswordForm.controls['email']
+            .dirty && newPasswordForm.hasError(error.errorName, 'email')">{{error.message}}</small>
+        </ng-container>
+        <input [class.error]="newPasswordForm.controls['email'].dirty &&
+            newPasswordForm.hasError('required', 'email') ||
+            newPasswordForm.hasError('pattern')" type="text" id="email" name="email" placeholder="Enter your email"
+            formControlName="email">
+        <ng-container *ngFor="let error of passwordError">
+            <small class="text-danger" *ngIf="newPasswordForm.controls['newPassword']
+            .dirty && newPasswordForm.hasError(error.errorName, 'newPassword')">{{error.message}}</small>
+        </ng-container>
+        <div class="user-pass">
+            <input [class.error]="newPasswordForm.controls['newPassword'].dirty &&
+            newPasswordForm.hasError('required', 'newPassword') ||
+            newPasswordForm.hasError('pattern')" [type]="type" id="newPassword" name="newPassword"
+                placeholder="New password" formControlName="newPassword">
+            <ng-container *ngIf="isText">
+                <span (click)="hideShowPass()" class="user-pass__hide-show">
+                    <img src="../../../assets/img/isShown.png">
+                </span>
+            </ng-container>
+            <ng-container *ngIf="!isText">
+                <span (click)="hideShowPass()" class="user-pass__hide-show">
+                    <img src="../../../assets/img/isHidden.png">
+                </span>
+            </ng-container>
+        </div>
+        <ng-container *ngFor="let error of passwordError">
+            <small class="text-danger" *ngIf="newPasswordForm.controls['reEnterPassword']
+             .dirty && newPasswordForm.hasError(error.errorName, 'reEnterPassword')">{{error.message}}</small>
+        </ng-container>
+        <input [class.error]="newPasswordForm.controls['reEnterPassword'].dirty &&
+            newPasswordForm.hasError('required', 'reEnterPassword') ||
+            newPasswordForm.hasError('pattern')" [type]="type" id="reEnterPassword" name="reEnterPassword"
+            placeholder="Re-enter the password" formControlName="reEnterPassword">
+        <button [disabled]="newPasswordForm.invalid" type="submit">Save</button>
+    </form>
+</div>

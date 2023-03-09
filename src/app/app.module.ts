@@ -10,9 +10,10 @@ import { RegistrationModule } from './moduls/registration/registration.module';
 
 
 
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   bootstrap: [AppComponent],
   imports: [

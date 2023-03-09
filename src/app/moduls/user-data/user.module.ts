@@ -1,8 +1,8 @@
 import { NgModule } from "@angular/core";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { ReactiveFormsModule } from "@angular/forms";
 import { MatDialogModule } from "@angular/material/dialog";
 import { BrowserModule } from "@angular/platform-browser";
-import { ModalWindowComponent } from "src/app/components/confirmation-window/confirmation-window.component";
+import { ComformationWindowComponent } from "src/app/components/confirmation-window/confirmation-window.component";
 import { SettingComponent } from "./setting/setting.component";
 import { UserDataComponent } from "./user-data.component";
 import { UserRoutingModule } from "./user-routing.module";
@@ -17,7 +17,7 @@ import { UserRoutingModule } from "./user-routing.module";
   ],
   declarations: [
     UserDataComponent,
-    ModalWindowComponent,
+    ComformationWindowComponent,
     SettingComponent,
   ],
   exports: [UserDataComponent],

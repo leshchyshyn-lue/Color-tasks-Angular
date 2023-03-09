@@ -5,35 +5,33 @@
             <ng-container *ngIf="errorMessage">
                 <small class="text-danger">{{errorMessage}}</small>
             </ng-container>
-
             <ng-container *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('required', 'username')">
                 <small class="text-danger">*Username is required</small>
             </ng-container>
-
             <div>
                 <label for="username"></label>
                 <input
                     [class.error]="loginForm.controls['username'].dirty && loginForm.hasError('required', 'username')"
                     type="text" id="username" name="username" placeholder="Username" formControlName="username">
             </div>
-
-
-
             <ng-container *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required', 'password')">
                 <small class="text-danger">*Password is required</small>
             </ng-container>
-
-            <div>
-                <label for="password"></label>
+            <div class="user-pass">
                 <input
                     [class.error]="loginForm.controls['password'].dirty && loginForm.hasError('required', 'password')"
-                    type="password" id="password" name="password" placeholder="Password" formControlName="password">
+                    [type]="type" id="password" name="password" placeholder="Password" formControlName="password">
+                <ng-container *ngIf="isText">
+                    <span (click)="hideShowPass()" class="user-pass__hide-show"><img
+                            src="../../../assets/img/isShown.png"></span>
+                </ng-container>
+                <ng-container *ngIf="!isText">
+                    <span (click)="hideShowPass()" class="user-pass__hide-show"><img
+                            src="../../../assets/img/isHidden.png"></span>
+                </ng-container>
             </div>
-
-
             <button [disabled]="loginForm.invalid" type="submit">LOG IN</button>
-
-
+            <a routerLink="/forgot" class="forgot">Forgot password?</a>
         </form>
         <div class="auth__have-account">
             <div class="auth__text">Don't have an account?</div>

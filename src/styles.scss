@@ -1,35 +1,19 @@
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
-// Plus imports for other components in your app.
 
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
 @include mat.core();
 
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
 $my-app-usertasks-primary: mat.define-palette(mat.$indigo-palette);
 $my-app-usertasks-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
 
-// The warn palette is optional (defaults to red).
 $my-app-usertasks-warn: mat.define-palette(mat.$red-palette);
 
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
 $my-app-usertasks-theme: mat.define-light-theme((color: (primary: $my-app-usertasks-primary,
                 accent: $my-app-usertasks-accent,
                 warn: $my-app-usertasks-warn,
             )));
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
 @include mat.all-component-themes($my-app-usertasks-theme);
 
-/* You can add global styles to this file, and also import other style files */
 @import url(assets/nullstyle.scss);
 
 
@@ -39,8 +23,6 @@ body {
     padding: 0px 20px;
     height: 100%;
 }
-
-
 
 .conteiner {
     padding: 20px 135px;
@@ -54,7 +36,7 @@ body {
 }
 
 .text-danger {
-    font-size: 15px;
+    font-size: 12px;
     text-align: center;
     color: red;
     max-width: 250px;
@@ -64,6 +46,7 @@ body {
 
 .error {
     border: 2px solid red;
+
 }
 
 .colors {
@@ -110,10 +93,11 @@ button {
 .tasks {
     display: flex;
     flex-direction: row;
+    justify-content: flex-start;
     max-width: 650px;
     flex-wrap: wrap;
     margin: 0 auto;
-    justify-content: flex-start;
+
 
     &__block {
         background-color: #d9d9d9;
@@ -121,7 +105,7 @@ button {
         max-height: 150px;
         min-width: 150px;
         min-height: 150px;
-        margin: 0px 10px 10px 0px;
+        margin: 10px 0px 0px 10px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -174,6 +158,26 @@ button {
     background-color: #FFF500;
 }
 
+.user-pass {
+    display: flex;
+    align-items: center;
+
+    input {
+        min-width: max-content;
+        margin-left: -15px;
+    }
+
+
+    &__hide-show {
+        margin-left: -40px;
+        margin-top: -17px;
+
+        img {
+            width: 25px;
+            height: 25px;
+        }
+    }
+}
 
 @media(max-width: 800px) {
     .conteiner {
@@ -181,17 +185,37 @@ button {
     }
 }
 
-@media(max-width: 630px) {
+@media(max-width: 600px) {
+    ::placeholder {
+        font-size: 10px;
+    }
+
     .conteiner {
         padding: 10px 35px;
     }
 
+    .user-pass {
+        input {
+
+            min-width: 100px;
+            margin-left: -5px;
+        }
+    }
+
     .text-danger {
-        font-size: 10px;
-
-
+        font-size: 8px;
         max-width: 100px;
         padding-bottom: 2px;
+    }
+
+    .user-pass__hide-show {
+        margin-left: -20px;
+        margin-top: -12px;
+
+        img {
+            width: 15px;
+            height: 15px;
+        }
     }
 }
 
@@ -250,4 +274,115 @@ button {
         background-color: #FFF500;
     }
 
+}
+
+.back-inputs {
+    background-color: #303030;
+    color: #fff;
+    font-weight: bold;
+    padding: 60px 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 60%;
+    margin-top: 20px;
+    border-radius: 15px;
+
+    input {
+        padding: 16px 0px 16px 10px;
+        max-width: 100%;
+        margin-bottom: 20px;
+        border-radius: 5px;
+
+        &:focus {
+            border: 2px solid #AFEEEE;
+        }
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-bottom: 3px solid #fff;
+        padding-bottom: 60px;
+        min-width: 100%;
+
+        button {
+            padding: 13px 30px;
+            border-radius: 5px;
+            background-color: #900101;
+            color: #fff;
+            font-size: 20px;
+            font-weight: bold;
+
+            &:hover {
+                background-color: #B22222;
+            }
+        }
+    }
+
+    &__title {
+        font-size: 21px;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .back-inputs {
+        padding: 30px 0px;
+        max-width: 250px;
+        margin-top: 5px;
+        max-width: 60%;
+
+        form {
+            border-bottom: 2px solid #fff;
+            padding-bottom: 20px;
+
+            button {
+                padding: 6px 15px;
+                font-size: 14px;
+            }
+        }
+
+        .delete-my {
+            margin-top: 30px;
+
+            padding: 5px 9px;
+
+        }
+
+        input {
+            padding: 5px 0px 5px 5px;
+            max-width: 100px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        &__title {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+    }
+}
+
+@media(max-width:430px) {
+    .back-inputs {
+        padding: 20px 0px;
+
+        &__title {
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+
+        form {
+            border-bottom: 1px solid #fff;
+            padding-bottom: 10px;
+        }
+
+        .delete-my {
+            margin-top: 20px;
+            font-size: 10px;
+        }
+    }
 }
